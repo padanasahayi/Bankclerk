@@ -1,0 +1,15 @@
+name: Keep Streamlit App Awake
+
+on:
+  schedule:
+    # ഓരോ 6 മണിക്കൂറിലും ഓട്ടോമാറ്റിക് ആയി റൺ ചെയ്യും
+    - cron: '0 */6 * * *'
+  workflow_dispatch:
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ping Streamlit App
+        run: |
+          curl -s https://bankclerk-7zixpordtemz77bwazruro.streamlit.app/ > /dev/null
